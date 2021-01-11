@@ -383,7 +383,7 @@ function goToActiveTabPanel() {
  * Returns active panel info
  */
 function getActivePanel() {
-  return Utils.cloneObject(this.state.panels[this.state.panelIndex])
+  return Utils.deepClone(this.state.panels[this.state.panelIndex])
 }
 
 /**

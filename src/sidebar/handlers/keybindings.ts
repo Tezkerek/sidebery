@@ -495,7 +495,7 @@ function onKeyMoveTabsToAct() {
       if (id === this.state.activeTabId) meh = true
       let tab = this.state.tabsMap[id]
       return {
-        ...Utils.cloneObject(tab),
+        ...Utils.deepClone(tab),
         type: 'tab',
         ctx: tab.cookieStoreId,
         windowId: this.state.windowId,

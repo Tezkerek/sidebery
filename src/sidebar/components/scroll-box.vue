@@ -12,8 +12,9 @@
       slot
 </template>
 
-<script>
+<script lang="ts">
 import Debounce from '../../directives/debounce'
+import Vue from 'vue'
 
 Vue.directive('debounce', Debounce)
 

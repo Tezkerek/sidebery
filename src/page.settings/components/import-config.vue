@@ -142,7 +142,7 @@ export default {
 
       if (this.settings && data.settings) {
         atLeastOne = true
-        toStore.settings = Utils.cloneObject(data.settings)
+        toStore.settings = Utils.deepClone(data.settings)
       }
 
       if (this.ctxMenu) {
@@ -155,7 +155,7 @@ export default {
 
       if (this.styles) {
         atLeastOne = true
-        if (data.cssVars) toStore.cssVars = Utils.cloneObject(data.cssVars)
+        if (data.cssVars) toStore.cssVars = Utils.deepClone(data.cssVars)
         if (data.sidebarCSS) toStore.sidebarCSS = data.sidebarCSS
         if (data.groupCSS) toStore.groupCSS = data.groupCSS
       }
@@ -242,7 +242,7 @@ export default {
 
       data.oldNewContainersMap = {}
 
-      for (let ctr of Object.values(Utils.cloneObject(data.containers_v4))) {
+      for (let ctr of Object.values(Utils.deepClone(data.containers_v4))) {
         let ffCtr = ffContainers.find(c => {
           return c.name === ctr.name && c.icon === ctr.icon && c.color === ctr.color
         })

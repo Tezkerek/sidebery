@@ -46,7 +46,7 @@
   .t-box: .title {{tab.title}}
 </template>
 
-<script>
+<script lang="ts">
 import TabMixin from '../mixins/tab'
 import State from '../store/state'
 import Actions from '../actions'
@@ -66,7 +66,7 @@ export default {
     /**
      * Handle mousedown event on expand button
      */
-    onExp(e) {
+    onExp(e: MouseEvent) {
       // Fold/Expand branch
       if (e.button === 0) {
         if (State.ctxMenu) Actions.closeCtxMenu()
@@ -93,7 +93,7 @@ export default {
     /**
      * Handle click on close btn
      */
-    onCloseClick(e) {
+    onCloseClick(e: MouseEvent) {
       if (e.button === 0) this.close()
       if (e.button === 1) this.close()
       if (e.button === 2) this.closeTree()

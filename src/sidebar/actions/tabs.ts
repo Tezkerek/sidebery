@@ -1466,12 +1466,12 @@ async function moveTabsToWin(tabIds, windowOrConfig) {
       tab.lvl = 0
       tab.parentId = -1
     }
-    tabs.push(Utils.cloneObject(tab))
+    tabs.push(Utils.deepClone(tab))
     if (tab.folded) {
       for (let i = tab.index + 1; i < this.state.tabs.length; i++) {
         let childTab = this.state.tabs[i]
         if (childTab.lvl <= tab.lvl) break
-        tabs.push(Utils.cloneObject(childTab))
+        tabs.push(Utils.deepClone(childTab))
       }
     }
   }
@@ -2465,7 +2465,7 @@ function queryTab(props) {
   const tab = this.state.tabs.find(t => {
     return Object.keys(props).every(p => t[p] === props[p])
   })
-  if (tab) return Utils.cloneObject(tab)
+  if (tab) return Utils.deepClone(tab)
 }
 
 /**

@@ -20,11 +20,11 @@ async function loadPanels() {
   let bookmarksPanelIndex = panels.findIndex(p => p.type === 'bookmarks')
   let defaultPanelIndex = panels.findIndex(p => p.type === 'default')
   if (bookmarksPanelIndex === -1 && this.state.bookmarksPanel) {
-    panels.unshift(Utils.cloneObject(BOOKMARKS_PANEL_STATE))
+    panels.unshift(Utils.deepClone(BOOKMARKS_PANEL_STATE))
     bookmarksPanelIndex = 0
   }
   if (defaultPanelIndex === -1) {
-    let defaultPanelClone = Utils.cloneObject(DEFAULT_PANEL_STATE)
+    let defaultPanelClone = Utils.deepClone(DEFAULT_PANEL_STATE)
     panels.splice(bookmarksPanelIndex + 1, 0, defaultPanelClone)
     defaultPanelIndex = 1
   }

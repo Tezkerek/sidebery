@@ -209,7 +209,7 @@ export default {
      */
     async applySnapshot(snapshot) {
       // TODO: show loading spinner or something...
-      snapshot = Utils.cloneObject(snapshot)
+      snapshot = Utils.deepClone(snapshot)
       await this.restoreContainers(snapshot.containersById)
       await this.restorePanels(snapshot)
       await browser.runtime.sendMessage({
@@ -224,7 +224,7 @@ export default {
      * Open window with listed tabs
      */
     async openWindow(snapshot, winId) {
-      snapshot = Utils.cloneObject(snapshot)
+      snapshot = Utils.deepClone(snapshot)
       await this.restoreContainers(snapshot.containersById)
       await this.restorePanels(snapshot)
       browser.runtime.sendMessage({
@@ -262,7 +262,7 @@ export default {
         let localPanel = panels_v4.find(p => p.id === snapPanel.id)
         if (localPanel) continue
 
-        let panel = Utils.cloneObject(snapPanel)
+        let panel = Utils.deepClone(snapPanel)
         State.panels.push(panel)
         State.panelsMap[panel.id] = panel
         Actions.savePanelsDebounced()
@@ -376,7 +376,7 @@ function normalizeSnapshot(snapshot) {
     // Normalize panels
     let defaultTabs = snapshot.panels.find(p => p.type === 'default')
     if (!defaultTabs) {
-      snapshot.panels.unshift(Utils.cloneObject(DEFAULT_TABS_PANEL))
+      snapshot.panels.unshift(Utils.deepClone(DEFAULT_TABS_PANEL))
     }
     for (let panel of snapshot.panels) {
       if (panel.type !== 'default' && panel.type !== 'tabs') continue
@@ -410,8 +410,8 @@ function normalizeSnapshot(snapshot) {
     id: snapshot.id,
     type: 'base',
     event: 'init',
-    windowsById: Utils.cloneObject(windowsById),
-    containersById: Utils.cloneObject(containersById),
+    windowsById: Utils.deepClone(windowsById),
+    containersById: Utils.deepClone(containersById),
     panels: Utils.cloneArray(panels),
     date: Utils.uDate(snapshot.time),
     time: Utils.uTime(snapshot.time),

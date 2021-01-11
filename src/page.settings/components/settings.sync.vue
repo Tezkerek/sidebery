@@ -136,7 +136,7 @@ export default {
           data.settings.syncAutoApply = State.syncAutoApply
         }
 
-        await browser.storage.local.set(Utils.cloneObject(data))
+        await browser.storage.local.set(Utils.deepClone(data))
 
         if (data.settings) Actions.loadSettings()
         if (data.tabsMenu) Actions.loadCtxMenu()

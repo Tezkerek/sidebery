@@ -51,10 +51,10 @@
   Notifications
 </template>
 
-<script>
+<script lang="ts">
 import { PRE_SCROLL } from '../../addon/defaults'
 import EventBus from '../event-bus'
-import State from './store/state.js'
+import State from './store/state'
 import Actions from './actions'
 import CtxMenu from './components/context-menu'
 import NavBar from './components/nav-bar'

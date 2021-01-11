@@ -65,7 +65,7 @@ async function saveCtxMenu() {
     if (this.state.tabsPanelMenu) value.tabsPanelMenu = this.state.tabsPanelMenu
     if (this.state.bookmarksMenu) value.bookmarksMenu = this.state.bookmarksMenu
     if (this.state.bookmarksPanelMenu) value.bookmarksPanelMenu = this.state.bookmarksPanelMenu
-    value = Utils.cloneObject(value)
+    value = Utils.deepClone(value)
 
     browser.storage.sync.set({
       [profileId + '::ctxMenu']: { value, time: Date.now(), name: this.state.syncName },

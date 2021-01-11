@@ -15,7 +15,7 @@ async function loadContainers() {
   for (let ffContainer of ffContainers) {
     let container = containers[ffContainer.cookieStoreId]
     if (!container) {
-      container = Utils.cloneObject(DEFAULT_CONTAINER)
+      container = Utils.deepClone(DEFAULT_CONTAINER)
       containers[ffContainer.cookieStoreId] = container
     }
 
@@ -54,7 +54,7 @@ async function loadContainers() {
  */
 function saveContainers() {
   browser.storage.local.set({
-    containers_v4: Utils.cloneObject(this.state.containers),
+    containers_v4: Utils.deepClone(this.state.containers),
   })
 }
 function saveContainersDebounced(delay = 500) {

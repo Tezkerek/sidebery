@@ -91,7 +91,7 @@ async function saveStylesToSync(cssVars) {
   let value = {}
   if (this.state.sidebarCSS) value.sidebarCSS = this.state.sidebarCSS
   if (this.state.groupCSS) value.groupCSS = this.state.groupCSS
-  if (cssVars) value.cssVars = Utils.cloneObject(cssVars)
+  if (cssVars) value.cssVars = Utils.deepClone(cssVars)
 
   await browser.storage.sync.set({
     [profileId + '::styles']: { value, time: Date.now(), name: this.state.syncName },

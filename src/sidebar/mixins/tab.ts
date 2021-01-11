@@ -2,6 +2,8 @@ import EventBus from '../../event-bus'
 import State from '../store/state'
 import Actions from '../actions'
 import Favicon from '../components/favicon'
+import Utils from '../../utils'
+import { browser } from 'webextension-polyfill-ts'
 
 const PNG_RE = /(\.png)([?#].*)?$/i
 const JPG_RE = /(\.jpe?g)([?#].*)?$/i
@@ -24,10 +26,11 @@ export default {
     },
 
     tooltip() {
+      const title = Utils.limitStringLength(this.tab.title, 300)
       try {
-        return `${this.tab.title}\n${decodeURI(this.tab.url)}`
+        return `${title}\n${Utils.limitStringLength(decodeURI(this.tab.url), 300)}`
       } catch (err) {
-        return `${this.tab.title}\n${this.tab.url}`
+        return `${title}\n${Utils.limitStringLength(this.tab.url, 300)}`
       }
     },
 
@@ -54,7 +57,7 @@ export default {
     /**
      * Mousedown handler
      */
-    onMouseDown(e) {
+    onMouseDown(e: MouseEvent) {
       if (State.ctxMenu) State.ctxMenu = null
       if (e.button === 0) this.onMouseDownLeft(e)
       if (e.button === 1) this.onMouseDownMid(e)
@@ -64,7 +67,7 @@ export default {
     /**
      * Mousedown Left
      */
-    onMouseDownLeft(e) {
+    onMouseDownLeft(e: MouseEvent) {
       this.mouseDownLeft = true
 
       if (e.ctrlKey) {
@@ -131,7 +134,7 @@ export default {
     /**
      * Mousedown Mid
      */
-    onMouseDownMid(e) {
+    onMouseDownMid(e: MouseEvent) {
       this.close()
       Actions.blockWheel()
       e.preventDefault()
@@ -140,7 +143,7 @@ export default {
     /**
      * Mousedown Right
      */
-    onMouseDownRight(e) {
+    onMouseDownRight(e: MouseEvent) {
       if (!State.ctxMenuNative && !this.tab.sel) {
         Actions.resetSelection()
         Actions.startMultiSelection({
@@ -176,7 +179,7 @@ export default {
     /**
      * Handle mouseup event
      */
-    onMouseUp(e) {
+    onMouseUp(e: MouseEvent) {
       if (State.tabLongClickFired) {
         this.mouseDownLeft = false
         return Actions.resetLongClickLock()
@@ -209,7 +212,7 @@ export default {
     /**
      * Handle context menu
      */
-    onCtxMenu(e) {
+    onCtxMenu(e: MouseEvent) {
       if (State.tabLongClickFired || !State.ctxMenuNative || e.ctrlKey || e.shiftKey) {
         State.tabLongClickFired = false
         e.stopPropagation()
@@ -266,14 +269,14 @@ export default {
     /**
      * Handle dragstart event.
      */
-    onDragStart(e) {
+    onDragStart(e: DragEvent) {
       if (!this.longClickActionLeft) return
 
       // Hide context menu (if any)
       if (State.ctxMenu) State.ctxMenu = null
 
       // Check what to drag
-      const toDrag = [this.tab.id]
+      const toDrag: number[] = [this.tab.id]
       const tabsToDrag = []
       if (!State.selected.length) tabsToDrag.push(this.tab)
       for (let tab of State.tabs) {
@@ -322,7 +325,7 @@ export default {
     /**
      * Handle dragenter event
      */
-    onDragEnter(e) {
+    onDragEnter(e: DragEvent) {
       if (this.tab.invisible) return
       if (this.tab.pinned) {
         this.dropSlot = true
@@ -336,7 +339,7 @@ export default {
     /**
      * Activate tab on drag enter
      */
-    dndActivate(e) {
+    dndActivate(e: DragEvent) {
       if (State.dndTabActMod !== 'none' && !e[State.dndTabActMod + 'Key']) return
       if (this.dragActTimeout) clearTimeout(this.dragActTimeout)
       this.dragActTimeout = setTimeout(() => {
@@ -349,7 +352,7 @@ export default {
     /**
      * Expand tabs branch on drag enter
      */
-    dndExp(e) {
+    dndExp(e: DragEvent) {
       if (State.dndExpMod !== 'none' && !e[State.dndExpMod + 'Key']) return
       if (this.dragExpTimeout) clearTimeout(this.dragExpTimeout)
       this.dragExpTimeout = setTimeout(() => {

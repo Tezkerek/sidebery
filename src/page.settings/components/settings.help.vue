@@ -147,7 +147,7 @@ export default {
         let { panels_v4 } = await browser.storage.local.get('panels_v4')
         dbg.panels = []
         for (let panel of panels_v4) {
-          let clone = Utils.cloneObject(panel)
+          let clone = Utils.deepClone(panel)
           if (clone.name) clone.name = clone.name.length
           if (clone.color) clone.color = '...'
           if (clone.icon) clone.icon = '...'
@@ -164,7 +164,7 @@ export default {
         let { containers_v4 } = await browser.storage.local.get({ containers_v4: {} })
         dbg.containers = []
         for (let container of Object.values(containers_v4)) {
-          let clone = Utils.cloneObject(container)
+          let clone = Utils.deepClone(container)
           if (clone.name) clone.name = clone.name.length
           if (clone.icon) clone.icon = '...'
           if (clone.color) clone.color = '...'

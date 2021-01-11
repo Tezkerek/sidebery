@@ -71,12 +71,12 @@
             :data-color="out.color ? opt.color : false") {{out.label}}
 </template>
 
-<script>
+<script lang="ts">
 import EventBus from '../../event-bus'
 import Store from '../store'
 import State from '../store/state'
 import Actions from '../actions'
-import ScrollBox from './scroll-box'
+import ScrollBox from './scroll-box.vue'
 
 export default {
   components: {

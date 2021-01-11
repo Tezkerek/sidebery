@@ -1,11 +1,12 @@
+import Vue from 'vue'
 import EventBus, { initMsgHandling } from '../event-bus'
-import Dict from '../mixins/dict'
 import { initActionsMixin } from '../mixins/act'
-import Store from './store'
-import State from './store/state'
-import Sidebar from './sidebar.vue'
+import Dict from '../mixins/dict'
 import Actions, { injectInActions } from './actions'
 import Handlers, { injectInHandlers } from './handlers'
+import Sidebar from './sidebar.vue'
+import Store from './store'
+import State from './store/state'
 
 const GLOB_CTX = {
   getters: Store.getters,

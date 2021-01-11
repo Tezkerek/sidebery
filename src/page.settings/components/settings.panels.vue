@@ -54,7 +54,7 @@ export default {
      * Create panel-container
      */
     async createPanel() {
-      let panel = Utils.cloneObject(TABS_PANEL)
+      let panel = Utils.deepClone(TABS_PANEL)
       panel.id = Utils.uid()
       panel.name = 'New Panel ' + (State.panels.length + 1)
       State.panels.push(panel)

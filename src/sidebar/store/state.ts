@@ -1,8 +1,6 @@
-import { DEFAULT_SETTINGS } from '../../../addon/defaults'
-import { DEFAULT_TABS_MENU } from '../../../addon/defaults'
-import { DEFAULT_BOOKMARKS_MENU } from '../../../addon/defaults'
-import { DEFAULT_TABS_PANEL_MENU } from '../../../addon/defaults'
-import { BOOKMARKS_PANEL_MENU } from '../../../addon/defaults'
+import { browser } from 'webextension-polyfill-ts'
+import { BOOKMARKS_PANEL_MENU, DEFAULT_BOOKMARKS_MENU, DEFAULT_SETTINGS, DEFAULT_TABS_MENU, DEFAULT_TABS_PANEL_MENU } from '../../defaults'
+import Utils from '../../utils'
 
 export default {
   private: browser.extension.inIncognitoContext,

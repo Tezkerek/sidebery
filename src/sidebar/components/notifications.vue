@@ -19,8 +19,8 @@
         .ctrl(@mousedown="onHideMouseDown($event, info, i)") {{t('notif.hide_ctrl')}}
 </template>
 
-<script>
-import State from '../store/state.js'
+<script lang="ts">
+import State from '../store/state'
 import Actions from '../actions'
 
 export default {

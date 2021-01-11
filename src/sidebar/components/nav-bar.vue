@@ -38,11 +38,11 @@
     svg: use(xlink:href="#icon_settings")
 </template>
 
-<script>
+<script lang="ts">
 import { translate } from '../../../addon/locales/dict.js'
 import { TABS_PANEL_STATE } from '../../../addon/defaults'
 import EventBus from '../../event-bus'
-import State from '../store/state.js'
+import State from '../store/state'
 import { getters } from '../store'
 import Actions from '../actions'
 
@@ -214,7 +214,7 @@ export default {
         return
       }
       if (type === 'add') {
-        let panel = Utils.cloneObject(TABS_PANEL_STATE)
+        let panel = Utils.deepClone(TABS_PANEL_STATE)
         panel.id = Utils.uid()
         panel.name = 'New Panel ' + (State.panels.length + 1)
         State.panels.push(panel)

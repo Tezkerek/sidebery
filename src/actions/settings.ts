@@ -24,7 +24,7 @@ async function saveSettings() {
     if (this.state[key] == null || this.state[key] == undefined) continue
     if (this.state[key] instanceof Object) {
       if (Array.isArray(this.state[key])) settings[key] = Utils.cloneArray(this.state[key])
-      else settings[key] = Utils.cloneObject(this.state[key])
+      else settings[key] = Utils.deepClone(this.state[key])
     } else {
       settings[key] = this.state[key]
     }
