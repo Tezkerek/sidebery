@@ -16,6 +16,7 @@
     "dev.ext": "web-ext run --source-dir ./addon -f firefox --keep-profile-changes --firefox-profile ./build/profile-stable",
     "dev.ext.beta": "web-ext run --source-dir ./addon -f firefox-beta --keep-profile-changes --firefox-profile ./build/profile-beta",
     "dev.ext.nightly": "web-ext run --source-dir ./addon -f firefox-nightly --keep-profile-changes --firefox-profile ./build/profile-nightly",
+    "dev.ext.dev": "web-ext run --source-dir ./addon -f firefox-developer-edition --keep-profile-changes --firefox-profile ./build/profile-developer-edition",
     "build.vendor": "node build/vendor.js -- build",
     "build.sidebar": "parcel build ./src/sidebar/sidebar.js -d ./addon/sidebar/ --public-url ./ --no-autoinstall --no-source-maps --no-cache",
     "build.settings": "parcel build ./src/page.settings/settings.js -d ./addon/settings/ --public-url ./ --no-autoinstall --no-source-maps --no-cache",

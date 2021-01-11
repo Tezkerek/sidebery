@@ -43,3 +43,5 @@ build/profile-beta/*
 !build/profile-beta/__preserve-dir
 build/profile-nightly/*
 !build/profile-nightly/__preserve-dir
+build/profile-developer-edition/*
+!build/profile-developer-edition/__preserve-dir
