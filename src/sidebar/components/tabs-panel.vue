@@ -21,9 +21,9 @@
         :tab="t")
 </template>
 
-<script>
+<script lang="ts">
 import EventBus from '../../event-bus'
-import { PRE_SCROLL } from '../../../addon/defaults'
+import { PRE_SCROLL } from '../../defaults'
 import State from '../store/state'
 import Actions from '../actions'
 import ScrollBox from './scroll-box'

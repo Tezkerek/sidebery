@@ -11,7 +11,7 @@
       p(v-else) {{t(label + o, plurNum)}}
 </template>
 
-<script>
+<script lang="ts">
 export default {
   props: {
     value: [String, Number],

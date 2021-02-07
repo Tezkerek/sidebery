@@ -22,7 +22,7 @@
       .btn.-warn(@click="onCancel") {{t('btn.cancel')}}
 </template>
 
-<script>
+<script lang="ts">
 import TextInput from '../../components/text-input'
 import State from '../store/state'
 

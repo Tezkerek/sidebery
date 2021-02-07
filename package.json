@@ -16,7 +16,7 @@
     "dev.ext": "web-ext run --source-dir ./addon -f firefox --keep-profile-changes --firefox-profile ./build/profile-stable",
     "dev.ext.beta": "web-ext run --source-dir ./addon -f firefox-beta --keep-profile-changes --firefox-profile ./build/profile-beta",
     "dev.ext.nightly": "web-ext run --source-dir ./addon -f firefox-nightly --keep-profile-changes --firefox-profile ./build/profile-nightly",
-    "dev.ext.dev": "web-ext run --source-dir ./addon -f firefox-developer-edition --keep-profile-changes --firefox-profile ./build/profile-developer-edition",
+    "dev.ext.dev": "web-ext run --source-dir ./dist -f firefox-developer-edition --keep-profile-changes --firefox-profile ./build/profile-developer-edition",
     "build.vendor": "node build/vendor.js -- build",
     "build.sidebar": "parcel build ./src/sidebar/sidebar.ts -d ./addon/sidebar/ --public-url ./ --no-autoinstall --no-source-maps --no-cache",
     "build.settings": "parcel build ./src/page.settings/settings.ts -d ./addon/settings/ --public-url ./ --no-autoinstall --no-source-maps --no-cache",
@@ -27,7 +27,9 @@
     "build.themes.tactile": "stylus ./src/styles/themes/tactile/sidebar.styl ./src/styles/themes/tactile/url.styl ./src/styles/themes/tactile/group.styl ./src/styles/themes/tactile/proxy.styl -c --out ./addon/themes/tactile/",
     "build.themes": "npm run build.themes.default && npm run build.themes.tactile",
     "build.ext": "web-ext build --source-dir ./addon -a dist/ -i __tests__",
-    "build": "npm run build.vendor && npm run build.sidebar && npm run build.settings && npm run build.group && npm run build.proxy && npm run build.url && npm run build.themes",
+    "build.old": "npm run build.vendor && npm run build.sidebar && npm run build.settings && npm run build.group && npm run build.proxy && npm run build.url && npm run build.themes",
+    "build": "parcel build src/manifest.json --target dev",
+    "watch": "parcel watch src/manifest.json --target dev",
     "clear.cache": "rm -rf .cache",
     "clear.npm": "rm -rf node_modules package-lock.json",
     "clear.sidebar": "find ./addon/sidebar -type f -not -name index.html -delete",
@@ -48,6 +50,8 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
     "@babel/plugin-transform-modules-commonjs": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "@babel/preset-typescript": "^7.12.7",
+    "@parcel/config-webextension": "^2.0.0-nightly.2151",
     "@typescript-eslint/eslint-plugin": "^3.2.0",
     "@typescript-eslint/parser": "^3.2.0",
     "@vue/component-compiler-utils": "^3.1.2",
@@ -69,8 +73,17 @@
     "webextension-polyfill-ts": "^0.22.0"
   },
   "dependencies": {
-    "vue": "^2.6.11",
-    "vuex": "^3.1.2"
+    "@vue/compiler-sfc": "^3.0.5",
+    "vue": "^3.0.5",
+    "vuex": "^4.0.0-rc.2"
+  },
+  "targets": {
+    "dev": {
+      "sourceMap": {
+        "inline": true,
+        "inlineSources": true
+      }
+    }
   },
   "prettier": {
     "semi": false,
@@ -79,9 +92,6 @@
     "tabWidth": 2,
     "printWidth": 100,
     "useTabs": false
-  },
-  "alias": {
-    "vue": "./node_modules/vue/dist/vue.esm.js"
   },
   "browserslist": [
     "last 1 Chrome version"

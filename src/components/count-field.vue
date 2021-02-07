@@ -11,7 +11,7 @@
     ToggleInput.toggle-input(:value="value !== off" @input="toggle")
 </template>
 
-<script>
+<script lang="ts">
 import TextInput from './text-input'
 import ToggleInput from './toggle-input'
 

@@ -34,7 +34,7 @@
     svg: use(xlink:href="#icon_remove")
 </template>
 
-<script>
+<script lang="ts">
 import TabMixin from '../mixins/tab'
 import State from '../store/state'
 

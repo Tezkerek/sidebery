@@ -17,7 +17,7 @@
   .note(v-if="note") {{note}}
 </template>
 
-<script>
+<script lang="ts">
 import SelectInput from './select-input'
 
 export default {

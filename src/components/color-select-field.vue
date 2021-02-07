@@ -8,7 +8,7 @@
     @input="select")
 </template>
 
-<script>
+<script lang="ts">
 import SelectColorInput from './color-select-input'
 
 export default {

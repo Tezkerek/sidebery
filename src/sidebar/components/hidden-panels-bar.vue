@@ -19,7 +19,7 @@
     .name {{panel.name}}
 </template>
 
-<script>
+<script lang="ts">
 import EventBus from '../../event-bus'
 import State from '../store/state'
 import Actions from '../actions'

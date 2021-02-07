@@ -17,7 +17,7 @@
   .to-the-end(v-if="pinnedTabs.length" @dragleave.stop="" @dragenter.stop="")
 </template>
 
-<script>
+<script lang="ts">
 import State from '../store/state'
 import Actions from '../actions'
 import PinnedTab from './pinned-tab'

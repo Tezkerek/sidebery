@@ -4,7 +4,7 @@
   .opt.-true {{t('settings.opt_true')}}
 </template>
 
-<script>
+<script lang="ts">
 export default {
   props: {
     value: Boolean,

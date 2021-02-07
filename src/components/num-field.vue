@@ -16,7 +16,7 @@
       @input="select")
 </template>
 
-<script>
+<script lang="ts">
 import SelectInput from './select-input'
 import TextInput from './text-input'
 

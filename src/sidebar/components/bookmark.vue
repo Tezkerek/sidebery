@@ -15,11 +15,11 @@
     .title(v-if="node.title") {{node.title}}
 </template>
 
-<script>
+<script lang="ts">
 import EventBus from '../../event-bus'
 import State from '../store/state'
 import Actions from '../actions'
-import { DEFAULT_CTX_ID } from '../../../addon/defaults'
+import { DEFAULT_CTX_ID } from '../../defaults'
 
 export default {
   props: {

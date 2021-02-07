@@ -20,7 +20,7 @@
     @input="onTextInput")
 </template>
 
-<script>
+<script lang="ts">
 import TextInput from './text-input'
 
 const RGBA_RE = /^rgba\((\d+),\s?(\d+),\s?(\d+),\s?(.+)\)$/

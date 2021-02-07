@@ -9,7 +9,7 @@
     .btn.-warn(@click="onSelectFolderCancel") {{t('bookmarks_select_folder.cancel')}}
 </template>
 
-<script>
+<script lang="ts">
 import State from '../store/state'
 
 export default {

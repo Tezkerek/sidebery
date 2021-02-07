@@ -7,7 +7,7 @@
   slot
 </template>
 
-<script>
+<script lang="ts">
 import ToggleInput from './toggle-input'
 
 export default {

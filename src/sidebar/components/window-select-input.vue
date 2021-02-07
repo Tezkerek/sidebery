@@ -12,7 +12,7 @@
         img(v-if="w.screen" :src="w.screen" @load="onScreenLoad(i)")
 </template>
 
-<script>
+<script lang="ts">
 import EventBus from '../../event-bus'
 import State from '../store/state'
 import ScrollBox from './scroll-box'

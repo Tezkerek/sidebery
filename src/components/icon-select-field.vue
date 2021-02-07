@@ -8,7 +8,7 @@
     @input="select")
 </template>
 
-<script>
+<script lang="ts">
 import SelectIconInput from './icon-select-input'
 
 export default {

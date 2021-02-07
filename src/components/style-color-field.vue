@@ -11,7 +11,7 @@
     ToggleInput.toggle(:value="!!value", @input="toggle")
 </template>
 
-<script>
+<script lang="ts">
 import ToggleInput from './toggle-input'
 import ColorInput from './color-input'
 

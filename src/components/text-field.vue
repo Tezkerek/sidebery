@@ -18,7 +18,7 @@
   .note(v-if="note") {{note}}
 </template>
 
-<script>
+<script lang="ts">
 import TextInput from './text-input'
 
 export default {

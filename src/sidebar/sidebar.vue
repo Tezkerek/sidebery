@@ -51,12 +51,12 @@
   Notifications
 </template>
 
-<script>
-import { PRE_SCROLL } from '../../addon/defaults'
+<script lang="ts">
+import { PRE_SCROLL } from '../defaults'
 import EventBus from '../event-bus'
-import State from './store/state.js'
+import State from './store/state'
 import Actions from './actions'
-import CtxMenu from './components/context-menu'
+import CtxMenu from './components/context-menu.vue'
 import NavBar from './components/nav-bar'
 import HiddenPanelsBar from './components/hidden-panels-bar'
 import BookmarksPanel from './components/bookmarks-panel'

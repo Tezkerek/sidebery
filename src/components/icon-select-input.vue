@@ -8,7 +8,7 @@
     svg: use(:xlink:href="'#' + o")
 </template>
 
-<script>
+<script lang="ts">
 export default {
   props: {
     value: String,

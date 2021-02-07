@@ -38,7 +38,7 @@
   .placeholder(v-if="or") {{or}}
 </template>
 
-<script>
+<script lang="ts">
 export default {
   props: {
     value: [String, Number],
